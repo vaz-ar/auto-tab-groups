@@ -5,8 +5,6 @@
 
 import { storage } from "wxt/utils/storage"
 import type {
-  AiProvider,
-  CachedAiSuggestions,
   CustomRulesMapping,
   GroupByMode,
   GroupColorMapping,
@@ -55,29 +53,9 @@ export const autoCollapseDelayMs = storage.defineItem<number>("local:autoCollaps
   fallback: DEFAULT_STATE.autoCollapseDelayMs
 })
 
-export const aiEnabled = storage.defineItem<boolean>("local:aiEnabled", {
-  fallback: DEFAULT_STATE.aiEnabled
-})
-
-export const aiProvider = storage.defineItem<AiProvider>("local:aiProvider", {
-  fallback: DEFAULT_STATE.aiProvider
-})
-
-export const aiModelId = storage.defineItem<string>("local:aiModelId", {
-  fallback: DEFAULT_STATE.aiModelId
-})
-
 export const openTabNextToCurrent = storage.defineItem<boolean>("local:openTabNextToCurrent", {
   fallback: DEFAULT_STATE.openTabNextToCurrent
 })
-
-/**
- * Cached AI suggestions (survives popup reopens, not a user setting)
- */
-export const cachedAiSuggestions = storage.defineItem<CachedAiSuggestions | null>(
-  "local:cachedAiSuggestions",
-  { fallback: null }
-)
 
 /**
  * Load all storage values at once
@@ -93,9 +71,6 @@ export async function loadAllStorage(): Promise<StorageSchema> {
     minimumTabsForGroupValue,
     autoCollapseEnabledValue,
     autoCollapseDelayMsValue,
-    aiEnabledValue,
-    aiProviderValue,
-    aiModelIdValue,
     openTabNextToCurrentValue
   ] = await Promise.all([
     autoGroupingEnabled.getValue(),
@@ -107,9 +82,6 @@ export async function loadAllStorage(): Promise<StorageSchema> {
     minimumTabsForGroup.getValue(),
     autoCollapseEnabled.getValue(),
     autoCollapseDelayMs.getValue(),
-    aiEnabled.getValue(),
-    aiProvider.getValue(),
-    aiModelId.getValue(),
     openTabNextToCurrent.getValue()
   ])
 
@@ -123,9 +95,6 @@ export async function loadAllStorage(): Promise<StorageSchema> {
     minimumTabsForGroup: minimumTabsForGroupValue,
     autoCollapseEnabled: autoCollapseEnabledValue,
     autoCollapseDelayMs: autoCollapseDelayMsValue,
-    aiEnabled: aiEnabledValue,
-    aiProvider: aiProviderValue,
-    aiModelId: aiModelIdValue,
     openTabNextToCurrent: openTabNextToCurrentValue
   }
 }
@@ -162,15 +131,6 @@ export async function saveAllStorage(data: Partial<StorageSchema>): Promise<void
   }
   if (data.autoCollapseDelayMs !== undefined) {
     promises.push(autoCollapseDelayMs.setValue(data.autoCollapseDelayMs))
-  }
-  if (data.aiEnabled !== undefined) {
-    promises.push(aiEnabled.setValue(data.aiEnabled))
-  }
-  if (data.aiProvider !== undefined) {
-    promises.push(aiProvider.setValue(data.aiProvider))
-  }
-  if (data.aiModelId !== undefined) {
-    promises.push(aiModelId.setValue(data.aiModelId))
   }
   if (data.openTabNextToCurrent !== undefined) {
     promises.push(openTabNextToCurrent.setValue(data.openTabNextToCurrent))

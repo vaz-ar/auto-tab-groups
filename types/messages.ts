@@ -2,7 +2,6 @@
  * Type definitions for background script messages
  */
 
-import type { AiMessage, AiMessageAction } from "./ai-messages"
 import type { CustomRule, RuleData, RulesExportData, RulesStats } from "./rules"
 import type { GroupByMode } from "./storage"
 
@@ -37,7 +36,6 @@ export type MessageAction =
   | "exportRules"
   | "importRules"
   | "getExportStats"
-  | AiMessageAction
 
 /**
  * Base message structure
@@ -69,12 +67,6 @@ export interface SimpleMessage extends BaseMessage {
     | "getRulesStats"
     | "exportRules"
     | "getExportStats"
-    | "getAiState"
-    | "getAiModelStatus"
-    | "loadAiModel"
-    | "unloadAiModel"
-    | "checkWebGpuSupport"
-    | "suggestGroups"
 }
 
 /**
@@ -165,7 +157,6 @@ export type Message =
   | UpdateCustomRuleMessage
   | DeleteCustomRuleMessage
   | ImportRulesMessage
-  | AiMessage
 
 /**
  * Base response structure

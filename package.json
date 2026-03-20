@@ -1,9 +1,26 @@
 {
   "name": "auto-tab-groups",
-  "version": "3.0.6",
-  "type": "module",
-  "description": "Cross-browser extension that automatically groups tabs by domain",
+  "version": "4.0.0",
   "author": "Nitzan Papini",
+  "contributors": ["Arnaud V."],
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.8",
+    "@playwright/test": "^1.58.2",
+    "@types/chrome": "^0.0.287",
+    "@vitest/coverage-v8": "^3.2.4",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4",
+    "wxt": "^0.20.20"
+  },
+  "description": "Cross-browser extension that automatically groups tabs by domain",
+  "keywords": [
+    "chrome-extension",
+    "firefox-addon",
+    "tab-management",
+    "productivity",
+    "wxt",
+    "typescript"
+  ],
   "private": true,
   "scripts": {
     "dev": "wxt",
@@ -26,24 +43,5 @@
     "code:fix": "biome check --write .",
     "postinstall": "wxt prepare"
   },
-  "dependencies": {
-    "@mlc-ai/web-llm": "^0.2.80"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "^2.3.11",
-    "@playwright/test": "^1.56.1",
-    "@types/chrome": "^0.0.287",
-    "@vitest/coverage-v8": "^3.2.4",
-    "typescript": "^5.9.3",
-    "vitest": "^3.0.0",
-    "wxt": "^0.20.6"
-  },
-  "keywords": [
-    "chrome-extension",
-    "firefox-addon",
-    "tab-management",
-    "productivity",
-    "wxt",
-    "typescript"
-  ]
+  "type": "module"
 }

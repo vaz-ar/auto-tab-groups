@@ -71,11 +71,7 @@ class TabGroupState {
       minimumTabsForGroup: this.minimumTabsForGroup,
       autoCollapseEnabled: this.autoCollapseEnabled,
       autoCollapseDelayMs: this.autoCollapseDelayMs,
-      openTabNextToCurrent: this.openTabNextToCurrent,
-      // AI settings managed by AiService, pass defaults for storage schema
-      aiEnabled: DEFAULT_STATE.aiEnabled,
-      aiProvider: DEFAULT_STATE.aiProvider,
-      aiModelId: DEFAULT_STATE.aiModelId
+      openTabNextToCurrent: this.openTabNextToCurrent
     }
   }
 

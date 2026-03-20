@@ -36,7 +36,6 @@ A lightweight cross-browser extension that automatically groups open tabs by dom
 - ✅ **Color management** - Persistent group colors across browser sessions
 - ✅ **Collapse/expand controls** - Manage tab group visibility
 - ✅ **Focus Mode** - Auto-collapse inactive groups when switching tabs
-- ✅ **AI-powered features** - On-device AI via WebLLM (privacy-first, no data leaves your browser)
 - ✅ **Configuration options** - Auto-grouping, subdomain handling, etc.
 - ✅ **Side panel support** - Chrome side panel and Firefox sidebar
 - ✅ **Modern UI** - Clean, responsive interface
@@ -89,18 +88,6 @@ A lightweight cross-browser extension that automatically groups open tabs by dom
 - Allows quick navigation between groups
 - Sidebar popup as an alternative to the main popup
 
-### 🤖 AI-Powered Features (On-Device, Privacy-First)
-
-All AI features run **entirely on your device** using [WebLLM](https://github.com/mlc-ai/web-llm) and WebGPU. No tab data ever leaves your browser.
-
-- **Smart Tab Group Suggestions**: Click "Suggest Groups" and the AI analyzes your open tabs to suggest topic-based groups (e.g., "Dev Tools", "Shopping", "Streaming") — not just domain-based grouping
-- **AI Rule Generation**: Describe a rule in plain English (e.g., "Group all social media sites together") and the AI generates the domains and configuration
-- **Suggestion Caching**: Apply suggestions one at a time — the popup remembers remaining suggestions across reopens
-- **Multiple Model Options**: Choose from 6 models ranging from lightweight (360MB) to high-quality (3.8GB), with Qwen2.5 3B recommended for best results
-- **WebGPU Accelerated**: Leverages your GPU for fast on-device inference
-
-**Requirements**: A WebGPU-capable browser (Chrome 113+, Firefox 141+) and a GPU with sufficient VRAM for the selected model.
-
 ## Planned Features
 
 - **Custom Rules UI Enhancements**:
@@ -109,10 +96,6 @@ All AI features run **entirely on your device** using [WebLLM](https://github.co
 - **Search Functionality**:
   - Search through open tabs and groups
   - Filter by domain, group name, or custom rules
-- **AI Enhancements**:
-  - Content-aware grouping using page content analysis
-  - Autonomous AI grouping mode (AI decides when to regroup)
-  - "Why is this tab here?" explainer for group assignments
 - **Improve Security, XSS, and CSP**:
   - Enhanced security measures to prevent XSS attacks
   - Content Security Policy (CSP) updates for better protection
@@ -185,14 +168,10 @@ bun run test:e2e      # Build extension and run E2E tests
 
 ### Unit Tests
 
-Located in `tests/`, these test core utilities, business logic, and AI features:
+Located in `tests/`, these test core utilities, business logic:
 
 - **`DomainUtils.test.ts`** (45 tests) - Domain extraction, ccSLD handling, edge cases
 - **`UrlPatternMatcher.test.ts`** (27 tests) - URL pattern matching, wildcards, validation
-- **`AiResponseParser.test.ts`** - AI response parsing, JSON extraction, suggestion validation
-- **`PromptTemplates.test.ts`** - Prompt construction and structure verification
-- **`AiService.test.ts`** - AI service orchestration, model management
-- **`WebLlmProvider.test.ts`** - WebLLM provider, model loading, completion
 
 ```bash
 bun run test                    # Run all unit tests
@@ -268,15 +247,10 @@ auto-tab-groups/
 │   ├── TabGroupService.ts    # Tab grouping logic
 │   ├── RulesService.ts       # Custom rules management
 │   ├── TabGroupState.ts      # State management
-│   ├── ai/                   # AI layer
-│   │   ├── AiService.ts      # AI orchestrator
-│   │   └── WebLlmProvider.ts # WebLLM provider (on-device inference)
 │   └── index.ts
 ├── utils/                    # Utilities
 │   ├── DomainUtils.ts        # Domain processing with ccSLD support
 │   ├── UrlPatternMatcher.ts  # URL pattern matching
-│   ├── AiResponseParser.ts   # AI response parsing and validation
-│   ├── PromptTemplates.ts    # AI prompt engineering
 │   ├── Constants.ts          # Tab group colors
 │   ├── RulesUtils.ts         # Rule validation helpers
 │   └── storage.ts            # WXT storage utilities
@@ -305,7 +279,6 @@ The extension works automatically in the background, grouping tabs by domain wit
   - Group by subdomain
   - Preserve manual color choices
 - Create and manage custom rules for advanced grouping
-- Use AI features for smart grouping and rule generation
 
 ### Custom Rules
 

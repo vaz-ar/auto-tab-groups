@@ -2,7 +2,6 @@
  * Type definitions for browser storage
  */
 
-import type { AiProvider } from "./ai"
 import type { CustomRule, TabGroupColor } from "./rules"
 
 /**
@@ -47,12 +46,6 @@ export interface StorageSchema {
   autoCollapseEnabled: boolean
   /** Delay in milliseconds before collapsing (0 = immediate) */
   autoCollapseDelayMs: number
-  /** Whether AI features are enabled */
-  aiEnabled: boolean
-  /** Active AI provider backend */
-  aiProvider: AiProvider
-  /** Selected AI model ID */
-  aiModelId: string
   /** Whether to open new tabs next to the current tab (opt-in, default off) */
   openTabNextToCurrent: boolean
 }
@@ -70,9 +63,6 @@ export const DEFAULT_STATE: StorageSchema = {
   minimumTabsForGroup: 1,
   autoCollapseEnabled: false,
   autoCollapseDelayMs: 0,
-  aiEnabled: false,
-  aiProvider: "webllm",
-  aiModelId: "Qwen2.5-3B-Instruct-q4f16_1-MLC",
   openTabNextToCurrent: false
 }
 

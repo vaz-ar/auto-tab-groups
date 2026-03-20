@@ -13,16 +13,11 @@ export default defineConfig({
       include: [
         "services/TabGroupState.ts",
         "services/TabGroupService.ts",
-        "services/ai/AiService.ts",
-        "services/ai/WebLlmProvider.ts",
-        "utils/AiResponseParser.ts",
         "utils/Constants.ts",
         "utils/DomainUtils.ts",
-        "utils/PromptTemplates.ts",
         "utils/RuleConflictDetector.ts",
         "utils/RulesUtils.ts",
-        "utils/UrlPatternMatcher.ts",
-        "utils/WebGpuUtils.ts"
+        "utils/UrlPatternMatcher.ts"
       ],
       exclude: [
         "**/node_modules/**",
